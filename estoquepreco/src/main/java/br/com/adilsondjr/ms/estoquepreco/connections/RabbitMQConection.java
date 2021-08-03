@@ -1,5 +1,6 @@
 package br.com.adilsondjr.ms.estoquepreco.connections;
 
+import br.com.adilsondjr.ms.estoquepreco.utils.Constants;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
@@ -10,10 +11,6 @@ import javax.annotation.PostConstruct;
 
 @Component
 public class RabbitMQConection {
-    private static final String EXCHANGE_NAME = "amq.direct";
-    private static final String QUEUE_ESTOQUE = "ESTOQUE";
-    private static final String QUEUE_PRECO = "PRECO";
-
     private AmqpAdmin amqpAdmin;
 
     public RabbitMQConection(AmqpAdmin amqpAdmin) {
@@ -25,7 +22,7 @@ public class RabbitMQConection {
     }
 
     private DirectExchange exchange() {
-        return new DirectExchange(EXCHANGE_NAME);
+        return new DirectExchange(Constants.EXCHANGE_NAME);
     }
 
     private Binding related(Queue queue, DirectExchange exchange) {
@@ -35,8 +32,8 @@ public class RabbitMQConection {
 
     @PostConstruct
     private void addQueue() {
-        Queue queueEstoque = this.queue(QUEUE_ESTOQUE);
-        Queue queuePreco = this.queue(QUEUE_PRECO);
+        Queue queueEstoque = this.queue(Constants.QUEUE_ESTOQUE);
+        Queue queuePreco = this.queue(Constants.QUEUE_PRECO);
 
         DirectExchange exchange = this.exchange();
 
