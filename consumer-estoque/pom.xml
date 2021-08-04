@@ -9,10 +9,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>br.com.adilsondjr.ms</groupId>
-	<artifactId>estoquepreco</artifactId>
+	<artifactId>consumer-estoque</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>estoquepreco</name>
-	<description>Microserviço de preço</description>
+	<name>consumer-estoque</name>
+	<description>MS to consume messages from queue</description>
 	<properties>
 		<java.version>11</java.version>
 	</properties>
@@ -24,18 +24,7 @@
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.projectlombok</groupId>
-			<artifactId>lombok</artifactId>
-			<optional>true</optional>
-		</dependency>
-
-		<dependency>
-			<groupId>org.springframework.amqp</groupId>
-			<artifactId>spring-rabbit</artifactId>
+			<artifactId>spring-boot-starter-amqp</artifactId>
 		</dependency>
 
 		<dependency>

@@ -1,16 +1,18 @@
 package br.com.adilsondjr.ms.estoquepreco.connections;
 
-import br.com.adilsondjr.ms.estoquepreco.utils.Constants;
 import org.springframework.amqp.core.AmqpAdmin;
 import org.springframework.amqp.core.Binding;
 import org.springframework.amqp.core.DirectExchange;
 import org.springframework.amqp.core.Queue;
 import org.springframework.stereotype.Component;
+import utils.Constants;
 
 import javax.annotation.PostConstruct;
 
 @Component
 public class RabbitMQConection {
+    private static final String EXCHANGE_NAME = "amq.direct";
+
     private AmqpAdmin amqpAdmin;
 
     public RabbitMQConection(AmqpAdmin amqpAdmin) {
@@ -22,7 +24,7 @@ public class RabbitMQConection {
     }
 
     private DirectExchange exchange() {
-        return new DirectExchange(Constants.EXCHANGE_NAME);
+        return new DirectExchange(EXCHANGE_NAME);
     }
 
     private Binding related(Queue queue, DirectExchange exchange) {

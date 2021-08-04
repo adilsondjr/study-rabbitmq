@@ -1,4 +1,4 @@
-package br.com.adilsondjr.ms.estoquepreco.dto;
+package dto;
 
 import lombok.Data;
 
